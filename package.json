@@ -1,24 +1,26 @@
 {
-  "name": "mmi-alert",
+  "name": "market-alerts",
   "version": "1.0.0",
   "description": "Send email alerts whenever mmi (market mood index) crosses a threshold value",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Siddharth11/mmi-alert.git"
+    "url": "git+https://github.com/deeps966/market-alerts.git"
   },
   "keywords": [],
-  "author": "Siddharth Parmar",
+  "author": "Deep Shah",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Siddharth11/mmi-alert/issues"
+    "url": "https://github.com/deeps966/market-alerts/issues"
   },
-  "homepage": "https://github.com/Siddharth11/mmi-alert#readme",
+  "homepage": "https://github.com/deeps966/market-alerts#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "gmail-send": "^1.2.14"
+    "gmail-send": "^1.2.14",
+    "node-cron": "^3.0.3"
   }
 }
