@@ -3,7 +3,7 @@ const emailTemplate = require('./emailTemplate.js');
 const gmailSend = require('gmail-send');
 
 try {
-  credentials = require('./credentials1.json');
+  credentials = require('./credentials.json');
 } catch (error) {
   console.log("Credentials file not found");
 }
