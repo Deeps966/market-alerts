@@ -12,9 +12,16 @@ cron.schedule('0 20 * * 1-5', () => {
 });
 
 http.createServer((req, res) => {
-  res.write("Market Alerts is Live -> Sending mail...")
-  handler.mmiAlert();
-  res.end();
+  const url = req.url;
+  if (url === '/') {
+    res.write('<html>');
+    res.write('<head> <title> Market Alerts </title> </head>');
+    res.write(`<h1>Welcome to Market Alerts</h1>
+    <h4>You will receive mail of Current Market Update</h4>`);
+    res.write('</html>');
+    handler.mmiAlert();
+    return res.end();
+  }
 }).listen(process.env.PORT);
 
 console.log("Market Alert script is live now at ", process.env.PORT)

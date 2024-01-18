@@ -1,10 +1,12 @@
+let credentials;
+const emailTemplate = require('./emailTemplate.js');
+const gmailSend = require('gmail-send');
+
 try {
-  const credentials = require('./credentials.json');
+  credentials = require('./credentials.json');
 } catch (error) {
   console.log("Credentials file not found");
 }
-const emailTemplate = require('./emailTemplate.js');
-const gmailSend = require('gmail-send');
 
 const sendMail = (zone, currentMarket, mmi, lastWeekMmi, lastMonthMmi) => {
   const title = `Today's MMI: ${mmi} | LastWeek: ${lastWeekMmi} | LastMonth: ${lastMonthMmi}`
