@@ -3,7 +3,7 @@ const emailTemplate = require('./emailTemplate.js');
 const gmailSend = require('gmail-send');
 
 try {
-  credentials = require('./credentials.json');
+  credentials = require('./credentials1.json');
 } catch (error) {
   console.log("Credentials file not found");
 }
@@ -15,7 +15,7 @@ const sendMail = (zone, currentMarket, mmi, lastWeekMmi, lastMonthMmi) => {
     gmailSend({
       user: credentials?.user || process.env.user,
       pass: credentials?.password || process.env.password,
-      to: credentials.user,
+      to: credentials?.user || process.env.user,
       subject: 'MMI ALERT - ' + currentMarket,
       text: title,
       html: emailTemplate(zone, title),
