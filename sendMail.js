@@ -1,4 +1,8 @@
-const credentials = require('./credentials.json');
+try {
+  const credentials = require('./credentials.json');
+} catch (error) {
+  console.log("Credentials file not found");
+}
 const emailTemplate = require('./emailTemplate.js');
 const gmailSend = require('gmail-send');
 
