@@ -1,5 +1,5 @@
 const axios = require('axios');
-const sendMail = require('./sendMail.js');
+const { sendMail } = require('./sendMail.js');
 const CONSTANTS = require('./constants');
 
 module.exports.mmiAlert = async () => {
