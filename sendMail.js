@@ -8,14 +8,16 @@ try {
   console.log("Credentials file not found");
 }
 
+const mailId = credentials?.user || process.env.user;
+
 const sendMail = (zone, currentMarket, mmi, lastWeekMmi, lastMonthMmi) => {
   const title = `Today's MMI: ${mmi} | LastWeek: ${lastWeekMmi} | LastMonth: ${lastMonthMmi}`
 
   return new Promise((resolve, reject) => {
     gmailSend({
-      user: credentials?.user || process.env.user,
+      user: mailId,
       pass: credentials?.password || process.env.password,
-      to: credentials?.user || process.env.user,
+      to: mailId,
       subject: 'MMI ALERT - ' + currentMarket,
       text: title,
       html: emailTemplate(zone, title),
@@ -28,4 +30,7 @@ const sendMail = (zone, currentMarket, mmi, lastWeekMmi, lastMonthMmi) => {
   });
 };
 
-module.exports = sendMail;
+module.exports = {
+  sendMail,
+  mailId
+};
