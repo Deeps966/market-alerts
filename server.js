@@ -3,7 +3,7 @@ const handler = require("./handler")
 const http = require("http")
 const { mailId } = require('./sendMail')
 
-const cronPattern = process.env.cronPattern || '0 20 * * 1-5';
+const cronPattern = process.env.cronPattern || '01 20 * * 1-5';
 console.log("Cron Pattern:", cronPattern, mailId)
 
 // Schedule the cron job
@@ -27,7 +27,7 @@ http.createServer((req, res) => {
   } else if (url === '/notify') {
     handler.mmiAlert();
     data = {
-      mailId,
+      mailId: process.env.mail || mailId,
       status: true
     }
     res.setHeader("Content-Type", "application/json");
