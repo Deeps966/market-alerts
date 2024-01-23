@@ -17,7 +17,7 @@ const sendMail = (zone, currentMarket, mmi, lastWeekMmi, lastMonthMmi) => {
     gmailSend({
       user: mailId,
       pass: credentials?.password || process.env.password,
-      to: mailId,
+      to: process.env.mail || mailId,
       subject: 'MMI ALERT - ' + currentMarket,
       text: title,
       html: emailTemplate(zone, title),
