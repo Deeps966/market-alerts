@@ -3,7 +3,7 @@ const handler = require("./handler")
 const http = require("http")
 const { mailId } = require('./sendMail')
 
-const cronPattern = process.env.cronPattern || '01 20 * * 1-5';
+const cronPattern = process.env.cronPattern || '00 20 * * 1-5';
 console.log("Cron Pattern:", cronPattern, mailId)
 
 // Schedule the cron job
@@ -37,3 +37,7 @@ http.createServer((req, res) => {
 }).listen(process.env.PORT);
 
 console.log(`Market Alert script is live now at ${process.env.NODE_ENV == "development" ? "http://127.0.0.1:8000" : "https://market-alerts.adaptable.app/"}`)
+
+setInterval(() => {
+  console.log('Server is Running...');
+}, 3600000)
