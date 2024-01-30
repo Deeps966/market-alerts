@@ -40,4 +40,4 @@ console.log(`Market Alert script is live now at ${process.env.NODE_ENV == "devel
 
 setInterval(() => {
   console.log('Server is Running...');
-}, 3600000)
+}, process.env.TIMEOUT || 1800000)
