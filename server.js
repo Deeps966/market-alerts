@@ -7,7 +7,7 @@ const https = require('https');
 const cronPattern = process.env.cronPattern || '00 20 * * 1-5';
 console.log("Cron Pattern:", cronPattern, mailId)
 
-const host = process.env.NODE_ENV == "development" ? `http://127.0.0.1:${process.env.PORT}/` : "http://market-alerts.adaptable.app/"
+const host = process.env.NODE_ENV == "development" ? `http://127.0.0.1:${process.env.PORT}/` : "https://market-alerts.adaptable.app/"
 
 // Schedule the cron job
 cron.schedule(cronPattern, () => {
@@ -41,9 +41,11 @@ http.createServer((req, res) => {
 
 console.log(`Market Alert script is live now at ${host}`)
 
-setInterval(() => {
-  console.log('Server is Running...');
-  http.get(host, (res) => {
-    console.log(res.statusCode)
-  });
-}, process.env.TIMEOUT || 1000) // Every minute
+if (process.env.NODE_ENV != 'development') {
+  setInterval(() => {
+    console.log('Server is Running...');
+    https.get(host, (res) => {
+      console.log(res.statusCode)
+    });
+  }, process.env.TIMEOUT || 1000) // Every minute
+}
