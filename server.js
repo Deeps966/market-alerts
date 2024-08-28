@@ -47,5 +47,10 @@ if (process.env.NODE_ENV != 'development') {
     https.get(host, (res) => {
       console.log(res.statusCode)
     });
+
+    // To keep running the Stock Alert Server in Adaptable.io
+    https.get("stock-alert.adaptable.app", (res) => {
+      console.log(res.statusCode)
+    });
   }, process.env.TIMEOUT || 1000) // Every minute
 }
